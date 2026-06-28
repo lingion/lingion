@@ -13,4 +13,10 @@ GitHub 上有几个仓库，大抵如此：
 
 偶尔写点东西：[blog.qdp.qzz.io](https://blog.qdp.qzz.io)
 
+---
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=lingion&show_icons=true&theme=default&hide_border=true&count_private=true" alt="GitHub Stats">
+</p>
+
 代码都在 [github.com/lingion](https://github.com/lingion)。
