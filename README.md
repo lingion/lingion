@@ -9,7 +9,11 @@ GitHub 上有几个仓库，大抵如此：
 - **[sleepy](https://github.com/lingion/sleepy)** — Android 课表。市面上的课表要么塞广告，要么导入不了教务系统，于是自己写了一个。
 - **[plot-mcp-worker](https://github.com/lingion/plot-mcp-worker)** — 给 AI 画图用的 MCP server，跑在 Cloudflare Workers 上。
 - **[AIaW](https://github.com/lingion/AIaW)** *(fork)* — 一个 AI 对话客户端，做了一些移动端适配。
+- **[wakeup-mod](https://github.com/lingion/wakeup-mod)** — 逆向了一份课程表，把广告和埋点都拆了，留个干净版本。
+- **[local-policy-agent](https://github.com/lingion/local-policy-agent)** — 一个本地策略代理的小项目。
 - **[HEU-keep](https://github.com/lingion/HEU-keep)** — 跑步数据生成器。→ [lingion.pp.ua](https://lingion.pp.ua)
+- **[qdp](https://github.com/lingion/qdp)** — Qobuz 下载工具，mod 了一下。
+- **[Dell-Precision-7740-OpenCore-EFI](https://github.com/lingion/Dell-Precision-7740-OpenCore-EFI)** — 黑苹果折腾的产物。
 
 偶尔写点东西：[blog.qdp.qzz.io](https://blog.qdp.qzz.io)
 
