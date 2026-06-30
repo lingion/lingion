@@ -2,9 +2,12 @@ name: Update stats SVG
 
 on:
   schedule:
-    # 6 小时一次；可改成 cron 拉满
+    # 6 小时一次
     - cron: '0 */6 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    # 当 README 改了 ?v= 也触发（self-sync）
 
 permissions:
   contents: write
@@ -35,7 +38,6 @@ jobs:
           )
           with urllib.request.urlopen(req, timeout=15) as r:
               data = json.load(r)
-          # 拉 repos 列表（拉所有 public + 有权限看 private）
           repos_req = urllib.request.Request(
               "https://api.github.com/users/lingion/repos?per_page=100&type=all",
               headers={
@@ -55,8 +57,43 @@ jobs:
       - name: Render SVG
         run: python3 scripts/render_svg.py out/stats.json > stats.svg
 
-      - name: Commit + push
+      - name: Sync README ?v= to current HEAD SHA + auto-commit
+        env:
+          HEAD_SHA: ${{ github.sha }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          # gh.qdp.qzz.io worker accepts ?v=<8 hex chars>, lower-case only
+          SHORT_SHA=$(echo "${HEAD_SHA}" | cut -c1-8)
+          # README img src 改 ?v=<new 7-char hex>
+          # 模式：v=[a-f0-9]{7} → 新 sha
+          python3 - <<PY
+          import re, sys
+          p = "README.md"
+          with open(p, encoding="utf-8") as f:
+              content = f.read()
+          new_sha = "$SHORT_SHA"
+          # 替换 ?v=<7hex> 为 ?v=<new>
+          new_content, n = re.subn(r'\?v=[a-f0-9]{7,40}', f'?v={new_sha}', content)
+          if n == 0:
+              # README 当前没有 ?v= — 插一个
+              new_content = re.sub(
+                  r'(/main/stats\.svg(?:\.svg)?)',
+                  lambda m: f'{m.group(1)}?v={new_sha}',
+                  content,
+                  count=1,
+              )
+              n = 1 if new_content != content else 0
+          if new_content == content:
+              print("README unchanged — no img src or already current", file=sys.stderr)
+              sys.exit(0)
+          with open(p, "w", encoding="utf-8") as f:
+              f.write(new_content)
+          print(f"README ?v= updated to {new_sha} ({n} replacement)")
+          PY
+
+      - name: Commit + push stats.svg + README
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: stats.svg
-          commit_message: 'chore(stats): refresh github stats card'
+          file_pattern: stats.svg README.md
+          commit_message: 'chore(stats): refresh card + sync README cache-bust'
