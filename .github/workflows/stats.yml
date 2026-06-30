@@ -5,9 +5,9 @@ on:
     # 6 小时一次
     - cron: '0 */6 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    # 当 README 改了 ?v= 也触发（self-sync）
+
+# NOTE: do NOT add a push trigger. This workflow auto-commits + pushes;
+# a push trigger would cause an infinite loop.
 
 permissions:
   contents: write
