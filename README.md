@@ -18,5 +18,5 @@
 <small>*哈尔滨工程大学在读。写代码，造轮子，偶尔在 <a href="https://blog.qdp.qzz.io">blog.qdp.qzz.io</a> 写点东西。*</small>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=lingion&show_icons=true&theme=default&hide_border=true&count_private=true" alt="GitHub Stats">
+  <img src="https://gh.qdp.qzz.io/lingion/lingion/raw/main/stats.svg" alt="GitHub Stats">
 </p>
