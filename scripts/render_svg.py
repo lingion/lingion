@@ -60,7 +60,7 @@ def render(user: dict, repos: list[dict]) -> str:
         )
         x_cursor += seg_w + 2
 
-    lang_labels = " &nbsp;·&nbsp; ".join(
+    lang_labels = " \u00a0·\u00a0 ".join(
         f'<tspan fill="{palette[i % len(palette)]}">{esc(lang)}</tspan> {pct:.1f}%'
         for i, (lang, _c, pct) in enumerate(langs)
     )
