@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="466" height="220" viewBox="0 0 466 220" fill="none">
+  <style>
+    .card { fill: #1a1b21; stroke: #383b43; stroke-width: 1; }
+    .title { font: 600 18px 'Segoe UI', Ubuntu, sans-serif; fill: #2f80ed; }
+    .bio   { font: 400 12px 'Segoe UI', Ubuntu, sans-serif; fill: #a9b1bb; }
+    .stat-label { font: 500 11px 'Segoe UI', Ubuntu, sans-serif; fill: #8b95a1; }
+    .stat-num   { font: 600 22px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+    .lang       { font: 500 11px 'Segoe UI', Ubuntu, sans-serif; fill: #a9b1bb; }
+  </style>
+  <rect class="card" width="466" height="220" rx="6"/>
+  <text x="20" y="38" class="title">GitHub Stats · lingion</text>
+  <text x="20" y="60" class="bio">哈尔滨工程大学 / Android (Kotlin/Compose) · TypeScript (Workers/MCP) · Python · APK 逆向 / github.com/lingion</text>
+
+  <!-- 三连 stat -->
+  <text x="20"  y="100" class="stat-num">11</text>
+  <text x="20"  y="118" class="stat-label">Public repos</text>
+  <text x="170" y="100" class="stat-num">32</text>
+  <text x="170" y="118" class="stat-label">Total stars</text>
+  <text x="320" y="100" class="stat-num">6</text>
+  <text x="320" y="118" class="stat-label">Followers</text>
+
+  <!-- lang bar -->
+  <text x="20" y="158" class="stat-label">Top languages</text>
+  <rect x="60.0" y="170" width="122.4" height="8" fill="#2f80ed" rx="4"/><rect x="184.4" y="170" width="98.8" height="8" fill="#4c71f2" rx="4"/><rect x="285.2" y="170" width="58.0" height="8" fill="#7c3aed" rx="4"/><rect x="345.2" y="170" width="47.9" height="8" fill="#10b981" rx="4"/><rect x="395.1" y="170" width="22.2" height="8" fill="#f59e0b" rx="4"/>
+  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Python</tspan> 34.0% &nbsp;·&nbsp; <tspan fill="#4c71f2">Java</tspan> 27.4% &nbsp;·&nbsp; <tspan fill="#7c3aed">TypeScript</tspan> 16.1% &nbsp;·&nbsp; <tspan fill="#10b981">Kotlin</tspan> 13.3% &nbsp;·&nbsp; <tspan fill="#f59e0b">ASL</tspan> 6.2%</text>
+</svg>
