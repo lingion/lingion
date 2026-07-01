@@ -13,7 +13,7 @@
   <text x="20" y="60" class="bio">哈尔滨工程大学 / Android (Kotlin/Compose) · TypeScript (Workers/MCP) · Python · APK 逆向 / github.com/lingion</text>
 
   <!-- 三连 stat -->
-  <text x="20"  y="100" class="stat-num">13</text>
+  <text x="20"  y="100" class="stat-num">14</text>
   <text x="20"  y="118" class="stat-label">Public repos</text>
   <text x="170" y="100" class="stat-num">32</text>
   <text x="170" y="118" class="stat-label">Total stars</text>
