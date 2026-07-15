@@ -18,5 +18,5 @@
 <small>*哈尔滨工程大学在读。写代码，造轮子，偶尔在 <a href="https://blog.qdp.qzz.io">blog.qdp.qzz.io</a> 写点东西。*</small>
 
 <p align="center">
-  <img src="https://gh.qdp.qzz.io/raw/lingion/lingion/main/stats.svg?v=449b7082" alt="GitHub Stats">
+  <img src="https://gh.qdp.qzz.io/raw/lingion/lingion/main/stats.svg?v=bd4dbfef" alt="GitHub Stats">
 </p>
