@@ -1,22 +1,93 @@
-# lingion
-
-我大抵是那种坐在屏幕前、手指悬在键盘上方、突然发现自己又造了一个轮子的人。
-
-写代码这件事，于我而言，没有什么宏伟的规划。就像一个人走在路上，看见缺了一块砖，便蹲下来捏一块补上——至于这块砖别人用不用，那是别人的事，砖已经在那里了。它存在，仅仅因为我路过的时候那里恰好是空的。
-
-我的技术栈是这样一种东西：它不是一个橱窗，不是几排擦得锃亮的标签。它更像是工具箱底层那堆混在一起的螺丝刀——每次伸手进去，摸到哪把就用哪把。Kotlin 是昨天学的，因为昨天需要一个 Android 课表的 widget 突破十一子控件的限制；TypeScript 是上个月捡起来的，因为 Cloudflare Workers 上跑 resvg-wasm 看起来很有趣；Python 是更早的事情，彼时只是想从 Qobuz 扒几张唱片下来，不知不觉就写出了一个完整的 TUI 下载器。至于那些 smali 字节码和 APK 反编译——我甚至不记得为什么要学这个，只记得某天深夜对着四万个 SDK 类和一串混淆成乱码的方法名，忽然觉得把它们一个个剔掉是一件很解压的事情。
-
-这大概就是我的"研究方向"：没有方向。哪里缺了，就往哪里填。别人的工具差那么一口气，我就拆开来改；别人没有做过的工具，我便自己动手做。不是为了填补什么空白——空白太多了，填不过来的——只是因为那一刻，我需要它存在。
-
-这些项目散落在我的仓库里，像是一个人在不同的夜晚捡回来的石头。有的是完整的山，有的只是一块碎片，有的甚至只是一次试探——某个四兆字节的 zip 文件至今还躺在 Merge 仓库里，注释只有一个井号加一个单词，标记着那个六月十号我开始往 GitHub 上传东西的下午。
-
-你若是觉得其中哪块石头有用，拿去便是。若是愿意给一个 star，我自然高兴——但这高兴就像路上有人冲你点了点头，不多不少，刚好够继续走下一段路。
-
-代码不过是代码。它们存在，只因为我在某个时刻决定让它们存在。仅此而已。
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Lingion&fontSize=64&animation=fadeIn&fontAlignY=38&desc=Builder+%7C+Tinkerer+%7C+Open+Source&descAlignY=62&descAlign=50"/>
+<a href="https://github.com/lingion">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=36BCF7&center=true&vCenter=true&width=700&lines=Build+what+you+need%2C+when+you+need+it;Android+(Kotlin%2FCompose)+%C2%B7+TypeScript+%C2%B7+Python+%C2%B7+APK+Reverse;Cloudflare+Workers+%C2%B7+MCP+Servers+%C2%B7+TUI+Tools;Harbin+Engineering+University" alt="Typing SVG" />
+</a>
+<img src="https://githubcard.com/lingion.svg" alt="GitHub Card" />
+</div>
 
 ---
-<small>*哈尔滨工程大学在读。写代码，造轮子，偶尔在 <a href="https://blog.qdp.qzz.io">blog.qdp.qzz.io</a> 写点东西。*</small>
+## 关于我 | About Me
+你好，我是 **Lingion**。
+一名在读于**哈尔滨工程大学**的开发者，习惯于发现缺了什么就去造什么——不是为了填空白，只是因为那一刻需要它存在。
 
-<p align="center">
-  <img src="https://gh.qdp.qzz.io/raw/lingion/lingion/main/stats.svg?v=21269cf0" alt="GitHub Stats">
+Hi, I'm **Lingion** — a student at Harbin Engineering University who builds tools when the road is missing a brick.
+
+我的技术栈是工具箱底层那堆混在一起的螺丝刀：每次伸手进去，摸到哪把就用哪把。Kotlin 写 Android，TypeScript 跑 Workers，Python 做各种自动化，偶尔还拆拆 APK。
+
+My stack is whatever's closest in the toolbox: Kotlin for Android, TypeScript for Cloudflare Workers, Python for automation, and APK reversing when the mood strikes.
+
+---
+## 关注方向 | Focus
+- Android development (Kotlin / Compose)
+- Cloudflare Workers & Edge Computing
+- MCP (Model Context Protocol) servers
+- CLI / TUI tools
+- Open source & developer tooling
+
+---
+## 技术栈 | Tech Stack
+<div align="center">
+<img src="https://img.shields.io/badge/Kotlin-20232A?style=for-the-badge&logo=kotlin&logoColor=7F52FF" />
+<img src="https://img.shields.io/badge/Android-20232A?style=for-the-badge&logo=android&logoColor=3DDC84" />
+<img src="https://img.shields.io/badge/TypeScript-20232A?style=for-the-badge&logo=typescript&logoColor=3178C6" />
+<img src="https://img.shields.io/badge/Python-20232A?style=for-the-badge&logo=python&logoColor=3776AB" />
+<img src="https://img.shields.io/badge/Cloudflare_F1F1F1?style=for-the-badge&logo=Cloudflare&logoColor=F38020" />
+<img src="https://img.shields.io/badge/Node.js-20232A?style=for-the-badge&logo=nodedotjs&logoColor=339933" />
+<img src="https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+<img src="https://img.shields.io/badge/Smali-20232A?style=for-the-badge&logo=android&logoColor=FF6B6B" />
+</div>
+
+---
+## 精选项目 | Selected Projects
+
+### qdp
+个人工具集合——Qobuz TUI 下载器、课表 Widget、APK 精简、SVG 渲染服务、OpenClaw 技能等。
+Personal toolkit: Qobuz TUI downloader, schedule widget, APK slimming, SVG rendering service, OpenClaw skills, and more.
+<p>
+  <a href="https://github.com/lingion/qdp">
+    <img src="https://opengraph.githubassets.com/1/lingion/qdp" alt="qdp" width="100%" />
+  </a>
 </p>
+<p>
+  <img src="https://img.shields.io/github/stars/lingion/qdp?style=flat-square&label=Stars" />
+  <img src="https://img.shields.io/github/forks/lingion/qdp?style=flat-square&label=Forks" />
+  <img src="https://img.shields.io/github/issues/lingion/qdp?style=flat-square&label=Issues" />
+  <img src="https://img.shields.io/github/last-commit/lingion/qdp?style=flat-square&label=Updated" />
+  <img src="https://img.shields.io/github/license/lingion/qdp?style=flat-square&label=License" />
+</p>
+
+---
+### plot-mcp-worker
+基于 Cloudflare Workers 的 MCP 图表生成服务——函数图、饼图、箱线图等，纯 SVG 渲染，零依赖。
+
+MCP chart generation service on Cloudflare Workers: function plots, pie charts, box plots, pure SVG rendering, zero dependencies.
+<p>
+  <a href="https://github.com/lingion/plot-mcp-worker">
+    <img src="https://opengraph.githubassets.com/1/lingion/plot-mcp-worker" alt="plot-mcp-worker" width="100%" />
+  </a>
+</p>
+<p>
+  <img src="https://img.shields.io/github/stars/lingion/plot-mcp-worker?style=flat-square&label=Stars" />
+  <img src="https://img.shields.io/github/forks/lingion/plot-mcp-worker?style=flat-square&label=Forks" />
+  <img src="https://img.shields.io/github/issues/lingion/plot-mcp-worker?style=flat-square&label=Issues" />
+  <img src="https://img.shields.io/github/last-commit/lingion/plot-mcp-worker?style=flat-square&label=Updated" />
+  <img src="https://img.shields.io/github/license/lingion/plot-mcp-worker?style=flat-square&label=License" />
+</p>
+
+---
+## 联系方式 | Contact
+<div align="center">
+
+| Platform | Link |
+| :--- | :--- |
+| GitHub | [github.com/lingion](https://github.com/lingion) |
+| Blog | [blog.qdp.qzz.io](https://blog.qdp.qzz.io) |
+| Email | [Lingion04@gmail.com](mailto:Lingion04@gmail.com) |
+
+</div>
+
+---
+<div align="center">
+<img src="https://komarev.com/ghpvc/?username=lingion&style=flat-square&color=blue" alt="Profile Views" />
+</div>
