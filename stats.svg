@@ -15,9 +15,9 @@
   <!-- 三连 stat -->
   <text x="20"  y="100" class="stat-num">13</text>
   <text x="20"  y="118" class="stat-label">Public repos</text>
-  <text x="170" y="100" class="stat-num">55</text>
+  <text x="170" y="100" class="stat-num">56</text>
   <text x="170" y="118" class="stat-label">Total stars</text>
-  <text x="320" y="100" class="stat-num">7</text>
+  <text x="320" y="100" class="stat-num">8</text>
   <text x="320" y="118" class="stat-label">Followers</text>
 
   <!-- lang bar -->
