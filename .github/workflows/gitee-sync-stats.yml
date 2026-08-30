@@ -1,0 +1,123 @@
+name: Gitee Stats Sync
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gitee-stats
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Poll Gitee star/fork/watch and update stats (incremental)
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, subprocess, urllib.request
+
+          GITEE_TOKEN = os.environ["GITEE_TOKEN"]
+          REPOS = ["wakeup-mod","qdp","mailgofer","sleepy-ios","sleepy","phantom-relay","HEU-keep",
+                   "plot-mcp-worker","Dell-Precision-7740-OpenCore-EFI","lingion","feishu-omp-bridge",
+                   "Nano-researcher","clash-verge-cli","Merge","oneplus-13t-dump","AIaW"]
+          STATE_FILE = ".gitee/state.json"
+          STATS_FILE = "gitee-stats.json"
+
+          def gitee(path):
+              sep = "&" if "?" in path else "?"
+              req = urllib.request.Request(
+                  f"https://gitee.com/api/v5/{path}{sep}access_token={GITEE_TOKEN}",
+                  headers={"User-Agent": "gitee-stats-sync"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read())
+
+          # current snapshot
+          now = {}
+          for repo in REPOS:
+              d = gitee(f"repos/lingion/{repo}")
+              now[repo] = {
+                  "star": d.get("stargazers_count", 0),
+                  "fork": d.get("forks_count", 0),
+                  "watch": d.get("watchers_count", 0),
+              }
+
+          prev = {}
+          if os.path.exists(STATE_FILE):
+              prev = json.load(open(STATE_FILE))
+
+          # incremental diff: which repos changed?
+          changed = {r: v for r, v in now.items() if prev.get(r) != v}
+          if not changed:
+              print("no changes since last poll")
+              raise SystemExit(0)
+
+          print(f"changed repos: {list(changed)}")
+          for r, v in changed.items():
+              p = prev.get(r, {})
+              print(f"  {r}: star {p.get('star',0)}->{v['star']}  fork {p.get('fork',0)}->{v['fork']}  watch {p.get('watch',0)}->{v['watch']}")
+
+          # fetch stargazers detail for changed repos (incremental list)
+          stargazers = {}
+          if os.path.exists("gitee-stargazers.json"):
+              stargazers = json.load(open("gitee-stargazers.json"))
+          for repo in changed:
+              try:
+                  lst = gitee(f"repos/lingion/{repo}/stargazers?per_page=100")
+                  stargazers[repo] = [u.get("login") or u.get("path","?") for u in lst]
+              except Exception as e:
+                  print(f"  stargazers fetch fail {repo}: {e}")
+
+          # write outputs
+          os.makedirs(".gitee", exist_ok=True)
+          total_star = sum(v["star"] for v in now.values())
+          total_fork = sum(v["fork"] for v in now.values())
+          stats = {
+              "updated_at": __import__("datetime").datetime.utcnow().isoformat() + "Z",
+              "totals": {"star": total_star, "fork": total_fork},
+              "repos": now,
+          }
+          json.dump(stats, open(STATS_FILE, "w"), ensure_ascii=False, indent=2)
+          json.dump(now, open(STATE_FILE, "w"), ensure_ascii=False, indent=2)
+          json.dump(stargazers, open("gitee-stargazers.json", "w"), ensure_ascii=False, indent=2)
+
+          # update README badge block between markers
+          badge_line = (f'[![Gitee star](https://img.shields.io/badge/'
+                        f'Gitee-⭐{total_star}-red)](https://gitee.com/lingion)'
+                        f'[![Gitee fork](https://img.shields.io/badge/'
+                        f'fork-🍴{total_fork}-blue)](https://gitee.com/lingion)')
+          readme = open("README.md").read()
+          START = "<!-- GITEE-STATS:START -->"
+          END = "<!-- GITEE-STATS:END -->"
+          block = f"{START}\n{badge_line}\n{END}"
+          if START in readme:
+              import re
+              readme = re.sub(f"{START}.*?{END}", block.replace("\\", "\\\\"), readme, flags=re.S)
+          else:
+              readme = readme.rstrip() + "\n\n" + block + "\n"
+          open("README.md", "w").write(readme)
+          print("files updated")
+          PYEOF
+
+      - name: Commit changes (only when stats changed)
+        run: |
+          git config user.name "lingion"
+          git config user.email "lingion@hrbeu.edu.cn"
+          git add gitee-stats.json gitee-stargazers.json .gitee/state.json README.md
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "stats: Gitee star/fork updated (incremental)"
+            git push
+          fi
