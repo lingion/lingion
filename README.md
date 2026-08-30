@@ -21,3 +21,7 @@
 <p align="center">
   <img src="https://githubcard.com/lingion.svg" alt="GitHub Card" />
 </p>
+
+<!-- GITEE-STATS:START -->
+[![Gitee star](https://img.shields.io/badge/Gitee-⭐0-red)](https://gitee.com/lingion)[![Gitee fork](https://img.shields.io/badge/fork-🍴0-blue)](https://gitee.com/lingion)
+<!-- GITEE-STATS:END -->
