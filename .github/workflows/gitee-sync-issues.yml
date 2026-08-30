@@ -1,0 +1,134 @@
+name: Gitee Issues Sync
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: gitee-issues
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Sync Gitee issues/comments to GitHub (incremental, all repos)
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, subprocess, urllib.request, urllib.parse
+
+          GITEE_TOKEN = os.environ["GITEE_TOKEN"]
+          GH_TOKEN = os.environ["GH_TOKEN"]
+          REPOS = ["wakeup-mod","qdp","mailgofer","sleepy-ios","sleepy","phantom-relay","HEU-keep",
+                   "plot-mcp-worker","Dell-Precision-7740-OpenCore-EFI","lingion","feishu-omp-bridge",
+                   "Nano-researcher","clash-verge-cli","Merge","oneplus-13t-dump","AIaW"]
+          GE = "https://gitee.com/api/v5"
+          GH = "https://api.github.com"
+
+          def gitee(path):
+              sep = "&" if "?" in path else "?"
+              req = urllib.request.Request(f"{GE}/{path}{sep}access_token={GITEE_TOKEN}",
+                                           headers={"User-Agent": "gitee-issues-sync"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read())
+
+          def gh_req(method, path, payload=None):
+              data = json.dumps(payload).encode() if payload is not None else None
+              req = urllib.request.Request(f"{GH}{path}", data=data, method=method, headers={
+                  "Authorization": f"Bearer {GH_TOKEN}",
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "gitee-issues-sync"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      body = r.read()
+                      return json.loads(body) if body else {}
+              except urllib.error.HTTPError as e:
+                  print(f"  gh {method} {path}: {e.code} {e.read()[:100]}")
+                  return {}
+
+          def gh_paged(path):
+              out, page = [], 1
+              while True:
+                  batch = gh_req("GET", f"{path}?per_page=100&page={page}")
+                  if not batch: break
+                  out += batch
+                  if len(batch) < 100: break
+                  page += 1
+              return out
+
+          created = updated = closed = 0
+          for repo in REPOS:
+              try:
+                  gitee_issues = gitee(f"repos/lingion/{repo}/issues?state=all&per_page=100")
+              except Exception as e:
+                  print(f"{repo}: gitee fetch fail {e}")
+                  continue
+              if not gitee_issues:
+                  continue
+              # existing synced issues on GitHub, mapped by label gitee-<number>
+              gh_issues = gh_paged(f"/repos/lingion/{repo}/issues?state=all&labels=gitee-synced")
+              by_label = {}
+              for gi in gh_issues:
+                  for lab in gi.get("labels", []):
+                      if lab["name"].startswith("gitee-"):
+                          by_label[lab["name"]] = gi
+              for gi in gitee_issues:
+                  num = gi["number"]
+                  label = f"gitee-{num}"
+                  title = gi.get("title", "")
+                  body_src = gi.get("body") or ""
+                  state = gi.get("state", "open")
+                  author = (gi.get("user") or {}).get("login", "?")
+                  html_url = gi.get("html_url", "")
+                  header = (f"> 来自 Gitee issue [{num}]({html_url}),"
+                            f"作者 **{author}**\n\n")
+                  existing = by_label.get(label)
+                  if not existing:
+                      gh_req("POST", f"/repos/lingion/{repo}/issues", {
+                          "title": f"[Gitee #{num}] {title}",
+                          "body": header + body_src,
+                          "labels": ["gitee-synced", label]})
+                      created += 1
+                      print(f"  {repo}: created issue for Gitee #{num}")
+                  else:
+                      new_body = header + body_src
+                      if existing.get("body") != new_body and existing.get("state") == "open":
+                          gh_req("PATCH", f"/repos/lingion/{repo}/issues/{existing['number']}", {
+                              "body": new_body,
+                              "state": state if state in ("open","closed") else "open"})
+                          updated += 1
+                      elif existing.get("state") == "open" and state == "closed":
+                          gh_req("PATCH", f"/repos/lingion/{repo}/issues/{existing['number']}",
+                                 {"state": "closed"})
+                          closed += 1
+                  # comments: sync gitee comments not yet mirrored
+                  try:
+                      gitee_comments = gitee(f"repos/lingion/{repo}/issues/{num}/comments?per_page=100")
+                  except Exception:
+                      gitee_comments = []
+                  if existing or created:
+                      target_num = (existing or {}).get("number")
+                      if not target_num:
+                          # just created - find it
+                          lst = gh_req("GET", f"/repos/lingion/{repo}/issues?labels=gitee-{num}&state=all")
+                          target_num = lst[0]["number"] if lst else None
+                      if target_num:
+                          gh_comments = gh_paged(f"/repos/lingion/{repo}/issues/{target_num}/comments")
+                          have = {c.get("body","").split("\n")[0] for c in gh_comments}
+                          for cm in gitee_comments:
+                              who = (cm.get("user") or {}).get("login","?")
+                              first_line = f"> Gitee 评论 by **{who}**:"
+                              if first_line not in have:
+                                  gh_req("POST", f"/repos/lingion/{repo}/issues/{target_num}/comments", {
+                                      "body": f"{first_line}\n\n{cm.get('body','')}"})
+          print(f"DONE created={created} updated={updated} closed={closed}")
+          PYEOF
