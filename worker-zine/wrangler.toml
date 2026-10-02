@@ -1,0 +1,6 @@
+name = "zine-card"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[observability]
+enabled = true
