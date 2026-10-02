@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 CAL_X = 660
-CAL_Y = 368
+CAL_Y = 408
 CELL = 8          # 8px stride
 DOT = 7           # 7px square inside the stride
 WEEKS = 53        # exactly 53 weeks shown
@@ -47,13 +47,13 @@ def months_row(weeks: list[dict]) -> str:
         if days[0]["date"][-2:] == "01" or first.month not in seen:
             if first.month not in seen:
                 x = CAL_X + wi * CELL
-                y = CAL_Y - 4
+                y = CAL_Y - 6
                 parts.append(
                     f'<text x="{x}" y="{y}">{first.strftime("%b").upper()}</text>'
                 )
                 seen.add(first.month)
     return (
-        '<g font-family="Arial,sans-serif" font-size="9" fill="#1f2937" opacity="0.75">'
+        '<g font-family="Arial,sans-serif" font-size="11" fill="#1f2937" opacity="0.75">'
         + "".join(parts)
         + "</g>"
     )
@@ -158,66 +158,66 @@ def main() -> int:
         '<rect width="600" height="630" fill="#dbeafe"/>'
         '<rect x="600" y="0" width="600" height="630" fill="#dbeafe"/>'
         '<line x1="600" y1="20" x2="600" y2="610" stroke="#1f2937" stroke-width="2" stroke-dasharray="6 4"/>'
-        '<text x="60" y="70" font-family="Courier New,monospace" font-size="14" font-weight="700" letter-spacing="4" fill="#1f2937">ZINE</text>'
-        '<text x="60" y="180" font-family="Arial Black,sans-serif" font-size="84" fill="#1f2937">lingion</text>'
-        f'<text x="60" y="218" font-family="Arial,sans-serif" font-size="14" fill="#1f2937">Harbin, China · blog.qdp.qzz.io</text>'
-        f'<text x="60" y="246" font-family="Arial,sans-serif" font-size="14" fill="#1f2937">GitHub member since {since}</text>'
-        '<rect x="46" y="262" width="290" height="76" fill="#1d4ed8" opacity="0.22" transform="rotate(-2 186 300)"/>'
-        f'<text x="60" y="324" font-family="Arial Black,sans-serif" font-size="64" fill="#1d4ed8">{n_with_thousands(total)}</text>'
-        f'<text x="60" y="350" font-family="Arial,sans-serif" font-size="14" fill="#1f2937">Contributions · Last 12 months ({rng})</text>'
-        '<g font-family="Arial,sans-serif" font-size="13" fill="#1f2937">'
-        '<text x="60" y="404">Repository stars</text>'
-        '<text x="60" y="430">Commits (last year)</text>'
-        '<text x="60" y="456">Pull requests</text>'
-        '<text x="60" y="482">Issues opened</text>'
-        '<text x="60" y="508">Repos contributed to</text>'
+        '<text x="60" y="72" font-family="Courier New,monospace" font-size="16" font-weight="700" letter-spacing="4" fill="#1f2937">ZINE</text>'
+        '<text x="60" y="190" font-family="Arial Black,sans-serif" font-size="100" fill="#1f2937">lingion</text>'
+        f'<text x="60" y="234" font-family="Arial,sans-serif" font-size="18" fill="#1f2937">Harbin, China · blog.qdp.qzz.io</text>'
+        f'<text x="60" y="266" font-family="Arial,sans-serif" font-size="18" fill="#1f2937">GitHub member since {since}</text>'
+        '<rect x="46" y="282" width="320" height="84" fill="#1d4ed8" opacity="0.22" transform="rotate(-2 200 322)"/>'
+        f'<text x="60" y="356" font-family="Arial Black,sans-serif" font-size="80" fill="#1d4ed8">{n_with_thousands(total)}</text>'
+        f'<text x="60" y="386" font-family="Arial,sans-serif" font-size="18" fill="#1f2937">Contributions · Last 12 months ({rng})</text>'
+        '<g font-family="Arial,sans-serif" font-size="17" fill="#1f2937">'
+        '<text x="60" y="436">Repository stars</text>'
+        '<text x="60" y="464">Commits (last year)</text>'
+        '<text x="60" y="492">Pull requests</text>'
+        '<text x="60" y="520">Issues opened</text>'
+        '<text x="60" y="548">Repos contributed to</text>'
         '</g>'
         '<g stroke="#1f2937" stroke-width="1.5" stroke-dasharray="1 5" stroke-linecap="round" opacity="0.5">'
-        '<line x1="172" y1="400" x2="470" y2="400"/>'
-        '<line x1="182" y1="426" x2="470" y2="426"/>'
-        '<line x1="158" y1="452" x2="470" y2="452"/>'
-        '<line x1="163" y1="478" x2="470" y2="478"/>'
-        '<line x1="178" y1="504" x2="470" y2="504"/>'
+        '<line x1="200" y1="432" x2="475" y2="432"/>'
+        '<line x1="212" y1="460" x2="475" y2="460"/>'
+        '<line x1="186" y1="488" x2="475" y2="488"/>'
+        '<line x1="190" y1="516" x2="475" y2="516"/>'
+        '<line x1="208" y1="544" x2="475" y2="544"/>'
         '</g>'
-        '<g font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#1d4ed8" text-anchor="end">'
-        f'<text x="540" y="404">{stars}</text>'
-        f'<text x="540" y="430">{n_with_thousands(totals["commits"])}</text>'
-        f'<text x="540" y="456">{totals["prs"]}</text>'
-        f'<text x="540" y="482">{totals["issues"]}</text>'
-        f'<text x="540" y="508">{totals["repos"]}</text>'
+        '<g font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1d4ed8" text-anchor="end">'
+        f'<text x="540" y="436">{stars}</text>'
+        f'<text x="540" y="464">{n_with_thousands(totals["commits"])}</text>'
+        f'<text x="540" y="492">{totals["prs"]}</text>'
+        f'<text x="540" y="520">{totals["issues"]}</text>'
+        f'<text x="540" y="548">{totals["repos"]}</text>'
         '</g>'
     )
 
     right = (
-        '<text x="660" y="70" font-family="Courier New,monospace" font-size="14" font-weight="700" letter-spacing="4" fill="#1f2937">ACTIVITY</text>'
-        '<text x="660" y="180" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#1d4ed8">B+</text>'
-        '<text x="660" y="218" font-family="Arial,sans-serif" font-size="14" fill="#1f2937">Activity Grade</text>'
-        f'<text x="700" y="282" font-family="Arial Black,sans-serif" font-size="42" fill="#1f2937" text-anchor="middle">{cur}</text>'
-        '<text x="700" y="308" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#1f2937" text-anchor="middle">CURRENT · DAYS</text>'
-        f'<text x="970" y="282" font-family="Arial Black,sans-serif" font-size="42" fill="#1f2937" text-anchor="middle">{best}</text>'
-        '<text x="970" y="308" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#1f2937" text-anchor="middle">LONGEST · DAYS</text>'
-        '<line x1="838" y1="240" x2="838" y2="320" stroke="#1f2937" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>'
-        '<text x="660" y="350" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#1f2937">CONTRIBUTION CALENDAR · '
+        '<text x="660" y="72" font-family="Courier New,monospace" font-size="16" font-weight="700" letter-spacing="4" fill="#1f2937">ACTIVITY</text>'
+        '<text x="660" y="196" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#1d4ed8">B+</text>'
+        '<text x="660" y="232" font-family="Arial,sans-serif" font-size="18" fill="#1f2937">Activity Grade</text>'
+        f'<text x="700" y="304" font-family="Arial Black,sans-serif" font-size="56" fill="#1f2937" text-anchor="middle">{cur}</text>'
+        '<text x="700" y="332" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#1f2937" text-anchor="middle">CURRENT · DAYS</text>'
+        f'<text x="970" y="304" font-family="Arial Black,sans-serif" font-size="56" fill="#1f2937" text-anchor="middle">{best}</text>'
+        '<text x="970" y="332" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#1f2937" text-anchor="middle">LONGEST · DAYS</text>'
+        '<line x1="838" y1="248" x2="838" y2="340" stroke="#1f2937" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>'
+        '<text x="660" y="372" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#1f2937">CONTRIBUTION CALENDAR · '
         f'{rng.upper()}'
         '</text>'
     )
 
     legend = (
-        '<g font-family="Arial,sans-serif" font-size="12" fill="#1f2937">'
-        '<text x="915" y="455">Less</text>'
-        '<text x="1053" y="455">More</text>'
+        '<g font-family="Arial,sans-serif" font-size="14" fill="#1f2937">'
+        '<text x="915" y="506">Less</text>'
+        '<text x="1053" y="506">More</text>'
         '</g>'
         '<g>'
-        '<rect x="951" y="444" width="14" height="14" fill="#ebedf0" stroke="#1f2937" stroke-opacity="0.25"/>'
-        '<rect x="971" y="444" width="14" height="14" fill="#9be9a8" stroke="#1f2937" stroke-opacity="0.25"/>'
-        '<rect x="991" y="444" width="14" height="14" fill="#40c463" stroke="#1f2937" stroke-opacity="0.25"/>'
-        '<rect x="1011" y="444" width="14" height="14" fill="#30a14e" stroke="#1f2937" stroke-opacity="0.25"/>'
-        '<rect x="1031" y="444" width="14" height="14" fill="#216e39" stroke="#1f2937" stroke-opacity="0.25"/>'
+        '<rect x="951" y="494" width="14" height="14" fill="#ebedf0" stroke="#1f2937" stroke-opacity="0.25"/>'
+        '<rect x="971" y="494" width="14" height="14" fill="#9be9a8" stroke="#1f2937" stroke-opacity="0.25"/>'
+        '<rect x="991" y="494" width="14" height="14" fill="#40c463" stroke="#1f2937" stroke-opacity="0.25"/>'
+        '<rect x="1011" y="494" width="14" height="14" fill="#30a14e" stroke="#1f2937" stroke-opacity="0.25"/>'
+        '<rect x="1031" y="494" width="14" height="14" fill="#216e39" stroke="#1f2937" stroke-opacity="0.25"/>'
         '</g>'
     )
 
     foot = (
-        f'<text x="60" y="566" font-family="Georgia, \'Times New Roman\', serif" font-size="11" font-style="italic" opacity="0.72" fill="#1f2937">'
+        f'<text x="60" y="600" font-family="Georgia, \'Times New Roman\', serif" font-size="13" font-style="italic" opacity="0.72" fill="#1f2937">'
         f'Actual data · GitHub GraphQL API · Peak {pd.strftime("%b %-d, %Y")}: {pn} · {active} active days'
         '</text></svg>'
     )
