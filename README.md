@@ -1,5 +1,9 @@
 # lingion
 
+<p align="center">
+  <img src="https://zine-card.lingion04.workers.dev/docs/zine.svg" alt="lingion — GitHub contribution zine card" width="720" />
+</p>
+
 我大抵是那种坐在屏幕前、手指悬在键盘上方、突然发现自己又造了一个轮子的人。
 
 写代码这件事，于我而言，没有什么宏伟的规划。就像一个人走在路上，看见缺了一块砖，便蹲下来捏一块补上——至于这块砖别人用不用，那是别人的事，砖已经在那里了。它存在，仅仅因为我路过的时候那里恰好是空的。
@@ -18,10 +22,6 @@
 <small>*哈尔滨工程大学在读。写代码，造轮子，偶尔在 <a href="https://blog.qdp.qzz.io">blog.qdp.qzz.io</a> 写点东西。*</small>
 
 ---
-<p align="center">
-  <img src="https://githubcard.com/lingion.svg" alt="GitHub Card" />
-</p>
-
 <!-- GITEE-STATS:START -->
 [![Gitee star](https://img.shields.io/badge/Gitee-⭐1-red)](https://gitee.com/lingion)[![Gitee fork](https://img.shields.io/badge/fork-🍴0-blue)](https://gitee.com/lingion)
 <!-- GITEE-STATS:END -->
