@@ -1,0 +1,39 @@
+name: Update zine card
+
+on:
+  schedule:
+    # every 6 hours
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+# NOTE: no push trigger — this workflow auto-commits; a push trigger would loop.
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch contribution data
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: bash scripts/zine_fetch.sh
+
+      - name: Render zine.svg
+        run: python3 scripts/render_zine.py < out/zine.json > docs/zine.svg
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet docs/zine.svg; then
+            echo "no change — skip commit"
+          else
+            git add docs/zine.svg
+            git commit -m "chore(zine): refresh card data"
+            git push
+          fi
