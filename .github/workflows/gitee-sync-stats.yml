@@ -35,13 +35,26 @@ jobs:
           STATE_FILE = ".gitee/state.json"
           STATS_FILE = "gitee-stats.json"
 
-          def gitee(path):
+          import time
+
+          def gitee(path, attempts=3):
+              # gitee api v5 intermittently stalls the TLS handshake from
+              # Actions runners (runs 36947202375 / 37083162532). Retry with
+              # backoff instead of failing the whole 5-min poll cycle.
               sep = "&" if "?" in path else "?"
-              req = urllib.request.Request(
-                  f"https://gitee.com/api/v5/{path}{sep}access_token={GITEE_TOKEN}",
-                  headers={"User-Agent": "gitee-stats-sync"})
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  return json.loads(r.read())
+              last = None
+              for i in range(attempts):
+                  try:
+                      req = urllib.request.Request(
+                          f"https://gitee.com/api/v5/{path}{sep}access_token={GITEE_TOKEN}",
+                          headers={"User-Agent": "gitee-stats-sync"})
+                      with urllib.request.urlopen(req, timeout=30) as r:
+                          return json.loads(r.read())
+                  except (urllib.error.URLError, TimeoutError, OSError) as e:
+                      last = e
+                      if i < attempts - 1:
+                          time.sleep(5 * (i + 1))
+              raise last
 
           # current snapshot
           now = {}
