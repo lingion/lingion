@@ -22,6 +22,6 @@
 
   <!-- lang bar -->
   <text x="20" y="158" class="stat-label">Top languages</text>
-  <rect x="60.0" y="170" width="110.9" height="8" fill="#2f80ed" rx="4"/><rect x="172.9" y="170" width="80.2" height="8" fill="#4c71f2" rx="4"/><rect x="255.1" y="170" width="68.0" height="8" fill="#7c3aed" rx="4"/><rect x="325.1" y="170" width="59.0" height="8" fill="#10b981" rx="4"/><rect x="386.1" y="170" width="25.0" height="8" fill="#f59e0b" rx="4"/>
-  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 30.8%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 22.3%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 18.9%  ·  <tspan fill="#10b981">Swift</tspan> 16.4%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.9%</text>
+  <rect x="60.0" y="170" width="109.4" height="8" fill="#2f80ed" rx="4"/><rect x="171.4" y="170" width="79.2" height="8" fill="#4c71f2" rx="4"/><rect x="252.5" y="170" width="67.0" height="8" fill="#7c3aed" rx="4"/><rect x="321.6" y="170" width="63.0" height="8" fill="#10b981" rx="4"/><rect x="386.6" y="170" width="24.6" height="8" fill="#f59e0b" rx="4"/>
+  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 30.4%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 22.0%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 18.6%  ·  <tspan fill="#10b981">Swift</tspan> 17.5%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.8%</text>
 </svg>
