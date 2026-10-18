@@ -13,7 +13,7 @@
   <text x="20" y="60" class="bio">哈尔滨工程大学 / Android (Kotlin/Compose) · TypeScript (Workers/MCP) · Python · APK 逆向 / github.com/lingion</text>
 
   <!-- 三连 stat -->
-  <text x="20"  y="100" class="stat-num">20</text>
+  <text x="20"  y="100" class="stat-num">21</text>
   <text x="20"  y="118" class="stat-label">Public repos</text>
   <text x="170" y="100" class="stat-num">117</text>
   <text x="170" y="118" class="stat-label">Total stars</text>
@@ -22,6 +22,6 @@
 
   <!-- lang bar -->
   <text x="20" y="158" class="stat-label">Top languages</text>
-  <rect x="60.0" y="170" width="107.7" height="8" fill="#2f80ed" rx="4"/><rect x="169.7" y="170" width="83.5" height="8" fill="#4c71f2" rx="4"/><rect x="255.2" y="170" width="66.0" height="8" fill="#7c3aed" rx="4"/><rect x="323.1" y="170" width="62.2" height="8" fill="#10b981" rx="4"/><rect x="387.3" y="170" width="24.2" height="8" fill="#f59e0b" rx="4"/>
-  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 29.9%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 23.2%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 18.3%  ·  <tspan fill="#10b981">Swift</tspan> 17.3%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.7%</text>
+  <rect x="60.0" y="170" width="107.3" height="8" fill="#2f80ed" rx="4"/><rect x="169.3" y="170" width="84.5" height="8" fill="#4c71f2" rx="4"/><rect x="255.7" y="170" width="65.8" height="8" fill="#7c3aed" rx="4"/><rect x="323.5" y="170" width="61.9" height="8" fill="#10b981" rx="4"/><rect x="387.4" y="170" width="24.2" height="8" fill="#f59e0b" rx="4"/>
+  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 29.8%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 23.5%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 18.3%  ·  <tspan fill="#10b981">Swift</tspan> 17.2%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.7%</text>
 </svg>
