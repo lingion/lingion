@@ -15,13 +15,13 @@
   <!-- 三连 stat -->
   <text x="20"  y="100" class="stat-num">27</text>
   <text x="20"  y="118" class="stat-label">Public repos</text>
-  <text x="170" y="100" class="stat-num">126</text>
+  <text x="170" y="100" class="stat-num">127</text>
   <text x="170" y="118" class="stat-label">Total stars</text>
   <text x="320" y="100" class="stat-num">15</text>
   <text x="320" y="118" class="stat-label">Followers</text>
 
   <!-- lang bar -->
   <text x="20" y="158" class="stat-label">Top languages</text>
-  <rect x="60.0" y="170" width="100.4" height="8" fill="#2f80ed" rx="4"/><rect x="162.4" y="170" width="80.2" height="8" fill="#4c71f2" rx="4"/><rect x="244.6" y="170" width="71.4" height="8" fill="#7c3aed" rx="4"/><rect x="318.0" y="170" width="69.5" height="8" fill="#10b981" rx="4"/><rect x="389.5" y="170" width="22.6" height="8" fill="#f59e0b" rx="4"/>
-  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 27.9%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 22.3%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 19.8%  ·  <tspan fill="#10b981">Swift</tspan> 19.3%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.3%</text>
+  <rect x="60.0" y="170" width="95.7" height="8" fill="#2f80ed" rx="4"/><rect x="157.7" y="170" width="93.4" height="8" fill="#4c71f2" rx="4"/><rect x="253.1" y="170" width="68.1" height="8" fill="#7c3aed" rx="4"/><rect x="323.1" y="170" width="66.2" height="8" fill="#10b981" rx="4"/><rect x="391.4" y="170" width="21.5" height="8" fill="#f59e0b" rx="4"/>
+  <text x="20" y="200" class="lang"><tspan fill="#2f80ed">Java</tspan> 26.6%  ·  <tspan fill="#4c71f2">Kotlin</tspan> 25.9%  ·  <tspan fill="#7c3aed">TypeScript</tspan> 18.9%  ·  <tspan fill="#10b981">Swift</tspan> 18.4%  ·  <tspan fill="#f59e0b">ASL</tspan> 6.0%</text>
 </svg>
