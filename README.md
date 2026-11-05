@@ -23,5 +23,5 @@
 
 ---
 <!-- GITEE-STATS:START -->
-[![Gitee star](https://img.shields.io/badge/Gitee-⭐1-red)](https://gitee.com/lingion)[![Gitee fork](https://img.shields.io/badge/fork-🍴0-blue)](https://gitee.com/lingion)
+[![Gitee star](https://img.shields.io/badge/Gitee-⭐2-red)](https://gitee.com/lingion)[![Gitee fork](https://img.shields.io/badge/fork-🍴0-blue)](https://gitee.com/lingion)
 <!-- GITEE-STATS:END -->
