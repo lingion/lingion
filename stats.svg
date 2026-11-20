@@ -13,7 +13,7 @@
   <text x="20" y="60" class="bio"> </text>
 
   <!-- 三连 stat -->
-  <text x="20"  y="100" class="stat-num">27</text>
+  <text x="20"  y="100" class="stat-num">28</text>
   <text x="20"  y="118" class="stat-label">Public repos</text>
   <text x="170" y="100" class="stat-num">147</text>
   <text x="170" y="118" class="stat-label">Total stars</text>
